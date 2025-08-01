@@ -1,0 +1,142 @@
+@import "./../../variables.scss";
+.box {
+  .curr {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $black;
+    color: $white;
+    width: 80px;
+    height: 40px;
+    margin: 16px 0;
+    border-radius: 100px;
+    position: absolute;
+    top: 0px;
+    right: 16px;
+  }
+}
+
+.navigate {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 40px);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  margin: 16px 0;
+  div {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: 1px dashed $greyDark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+      border: 1px dashed $black;
+    }
+  }
+}
+.attempted {
+  background-color: $black;
+  color: $white;
+}
+.question {
+  font-size: 24px;
+  font-weight: 500;
+  color: $black;
+  line-height: 1.5;
+  min-height: 72px;
+}
+.options {
+  margin: 16px 0;
+  font-size: 16px;
+  list-style: none;
+  width: 100%;
+  font-weight: 400;
+  li {
+    border: 1px dashed $greyDark;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    i {
+      font-size: 24px;
+      color: $greyDark;
+    }
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $black;
+    }
+    span {
+      color: $greyDark;
+    }
+  }
+}
+.optionActive {
+  border: 1px solid $greyDark !important;
+  background-color: $bgColor;
+  i {
+    color: $black !important;
+  }
+  span {
+    color: $black !important;
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  button {
+    width: 48px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: none;
+    background-color: $black;
+    color: $white;
+    &:nth-child(2) {
+      border: 1px solid $border;
+      color: $greyDark;
+      background-color: $bgColor;
+    }
+  }
+  div {
+    width: 150px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: none;
+    background-color: $black;
+    color: $white;
+    margin: 0 auto;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.disable {
+  background-color: $bgColor !important;
+  color: $border !important;
+  border: 1px solid $border !important;
+  &:hover {
+    cursor: default;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* Tablet */
+  .navigate {
+    gap: 8px;
+    margin: 8px 0;
+  }
+}

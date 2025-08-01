@@ -1,0 +1,32 @@
+<!-- Screen 1 (For Displaying initial Questions)-->
+<div *ngIf="screen == 1" class="container">
+  <h1 class="heading">Quiz App</h1>
+  <h2 class="sub-heading">Instructions</h2>
+  <div class="line"></div>
+  <ul class="list">
+    <li>Click to start the quiz.</li>
+    <li>Read each question carefully.</li>
+    <li>Choose the correct answer from the options.</li>
+    <li>Click the option button for your answer.</li>
+    <li>Navigate through questions using the provided controls.</li>
+    <li>Answer all 10 questions. No time limit .</li>
+    <li>Submit the quiz and view your score.</li>
+  </ul>
+  <button (click)="this.changeScreen(2)" class="btn-start">Start Quiz</button>
+</div>
+<!-- Screen 2 (For displaying Quiz Questions) -->
+<div *ngIf="screen == 2" class="container">
+  <h1 class="heading">Quiz</h1>
+  <app-quiz (endQuiz)="endQuiz()"></app-quiz>
+</div>
+
+<!-- Screen 3 (For displaying Quiz Result) -->
+<div *ngIf="screen == 3" class="container">
+  <h1 class="heading">Result</h1>
+  <app-result></app-result>
+</div>
+
+<footer>
+  <p>YashKS</p>
+  <p>2023 | © All rights reserved.</p>
+</footer>

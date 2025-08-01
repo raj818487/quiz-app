@@ -1,0 +1,33 @@
+<div class="data">
+  <div>
+    <span>Correct</span>
+    <span>{{ correct }}</span>
+  </div>
+  <div>
+    <span>Incorrect</span>
+    <span>{{ wrong }}</span>
+  </div>
+  <div>
+    <span>N/A</span>
+    <span>{{ unattempted }}</span>
+  </div>
+</div>
+<div class="questions">
+  <div *ngFor="let question of questions; let i = index">
+    <h1>{{ i + 1 }} - {{ question.text }}</h1>
+    <p
+      [ngClass]="
+        question.answer == answers[i]
+          ? 'correct'
+          : answers[i] != null
+          ? 'wrong'
+          : ''
+      "
+    >
+      Your Answer:
+      {{ this.answers[i] != null ? question.options[this.answers[i]] : "-" }}
+    </p>
+    <p>Correct Answer: {{ question.options[question.answer] }}</p>
+  </div>
+</div>
+<button (click)="reload()" class="btn-start">Restart</button>

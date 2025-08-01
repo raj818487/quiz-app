@@ -1,0 +1,72 @@
+@import "./../../variables.scss";
+.data {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 16px 0;
+  color: $black;
+  div {
+    border: 1px solid $border;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-direction: column;
+    span {
+      text-align: center;
+      &:last-child {
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+.questions {
+  width: 100%;
+  div {
+    margin-bottom: 8px;
+    border-bottom: 1px dashed $greyDark;
+    padding: 16px 0;
+    h1 {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: $greyDark;
+      line-height: 1.8;
+    }
+    &:last-child {
+      border: none !important;
+      margin-bottom: 0px !important;
+    }
+  }
+}
+.correct {
+  color: #0f9d58 !important;
+}
+.wrong {
+  color: #db4437 !important;
+}
+@media only screen and (max-width: 768px) {
+  /* Tablet */
+  .data {
+    gap: 4px;
+    margin: 8px 0;
+    div {
+      padding: 8px;
+      gap: 8px;
+      border-radius: 8px;
+
+      span {
+        &:last-child {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

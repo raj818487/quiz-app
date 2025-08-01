@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Chakra Petch", sans-serif;
+}
+body {
+  background-color: $bgColor;
+  padding: 3%;
+}
+button:hover {
+  cursor: pointer;
+}
+.btn-start {
+  display: block;
+  width: 180px;
+  height: 48px;
+  border: none;
+  background-color: $black;
+  color: $white;
+  margin: 16px auto 0px;
+  font-size: 16px;
+  border-radius: 100px;
+}
+footer {
+  width: 100%;
+  text-align: center;
+  margin: 32px 0;
+  p {
+    color: $black;
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 300;
+  }
+}
