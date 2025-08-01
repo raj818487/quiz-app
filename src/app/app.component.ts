@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { QuizComponent } from './quiz/quiz.component';
 import { ScreenService } from './screen.service';
 import { ResultComponent } from './result/result.component';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, QuizComponent, ResultComponent],
+  imports: [CommonModule, QuizComponent, ResultComponent, ButtonModule, CardModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

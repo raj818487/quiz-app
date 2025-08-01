@@ -1,38 +1,75 @@
-<div class="box">
-  <div class="navigate">
+<!-- Stepper -->
+<div class="stepper-section">
+  <p-steps 
+    [model]="steps" 
+    [readonly]="false" 
+    [activeIndex]="questionNo"
+    styleClass="custom-steps">
+  </p-steps>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-section">
+  <p-progressBar 
+    [value]="(questionNo + 1) * 10" 
+    [showValue]="false" 
+    styleClass="mb-4">
+  </p-progressBar>
+  <div class="question-counter">{{ questionNo + 1 }} / 10</div>
+</div>
+
+<!-- Question Card -->
+<div class="question-card">
+  <h1 class="question-text">{{ question.text }}</h1>
+  
+  <!-- Options -->
+  <div class="options-container">
     <div
-      *ngFor="let answer of answers; let i = index"
-      [ngClass]="answers[i] != null ? 'attempted' : ''"
-      (click)="this.setQuestion(i)"
+      *ngFor="let option of question.options; let i = index"
+      class="option-item"
+      [ngClass]="selectedAnswer === i ? 'option-selected' : ''"
+      (click)="selectOption(i)"
     >
-      {{ i + 1 }}
+      <div class="option-circle"></div>
+      <span class="option-label">{{ option }}</span>
     </div>
   </div>
-  <span class="curr">{{ questionNo + 1 }} / 10</span>
-
-  <h1 class="question">{{ question.text }}</h1>
-  <ul class="options">
-    <li
-      *ngFor="let option of question.options; let i = index"
-      (click)="setAnswer(questionNo, i)"
-      [ngClass]="i == answers[questionNo] ? 'optionActive' : ''"
-    >
-      <i class="fa-regular fa-circle" *ngIf="i != answers[questionNo]"></i>
-      <i class="fa-solid fa-circle-check" *ngIf="i == answers[questionNo]"></i>
-      <span>{{ option }}</span>
-    </li>
-  </ul>
-  <div class="buttons">
-    <button (click)="prevQue()" [ngClass]="questionNo == 0 ? 'disable' : ''">
-      <i class="fa-solid fa-arrow-left"></i>
-    </button>
-    <button (click)="clear()"><i class="fa-solid fa-broom"></i></button>
-    <button (click)="nextQue()" [ngClass]="questionNo == 9 ? 'disable' : ''">
-      <i class="fa-solid fa-arrow-right"></i>
-    </button>
+  
+  <!-- Navigation Buttons -->
+  <div class="navigation-buttons">
+    <div class="button-group">
+      <p-button 
+        (onClick)="prevQue()" 
+        [disabled]="questionNo == 0"
+        styleClass="nav-button prev-button"
+        [icon]="'pi pi-chevron-left'">
+        Previous
+      </p-button>
+      
+      <p-button 
+        (onClick)="clear()"
+        styleClass="nav-button clear-button"
+        [icon]="'pi pi-refresh'">
+        Clear
+      </p-button>
+      
+      <p-button 
+        (onClick)="nextQue()" 
+        [disabled]="questionNo == 9"
+        styleClass="nav-button next-button"
+        [icon]="'pi pi-chevron-right'">
+        Next
+      </p-button>
+    </div>
   </div>
 
-  <div class="buttons" *ngIf="questionNo == 9">
-    <div (click)="submit()" class="submit">Submit Quiz</div>
+  <!-- Submit Button -->
+  <div class="submit-section" *ngIf="questionNo == 9">
+    <p-button 
+      label="Submit Quiz" 
+      (onClick)="submit()"
+      styleClass="submit-button"
+      [icon]="'pi pi-check'">
+    </p-button>
   </div>
 </div>

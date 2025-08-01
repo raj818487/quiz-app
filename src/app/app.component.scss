@@ -1,4 +1,4 @@
-@import "./../variables.scss";
+@use "./../variables.scss" as *;
 .container {
   background-color: $white;
   width: min(680px, 100%);

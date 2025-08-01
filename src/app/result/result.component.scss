@@ -1,4 +1,4 @@
-@import "./../../variables.scss";
+@use "./../../variables.scss" as *;
 .data {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,33 +1,51 @@
+<!-- Score Summary -->
 <div class="data">
-  <div>
-    <span>Correct</span>
-    <span>{{ correct }}</span>
+  <div class="score-item">
+    <span class="score-label">Correct</span>
+    <span class="score-value correct">{{ correct }}</span>
   </div>
-  <div>
-    <span>Incorrect</span>
-    <span>{{ wrong }}</span>
+  <div class="score-item">
+    <span class="score-label">Incorrect</span>
+    <span class="score-value wrong">{{ wrong }}</span>
   </div>
-  <div>
-    <span>N/A</span>
-    <span>{{ unattempted }}</span>
+  <div class="score-item">
+    <span class="score-label">Unattempted</span>
+    <span class="score-value unattempted">{{ unattempted }}</span>
   </div>
 </div>
+
+<!-- Overall Progress -->
+<p-progressBar 
+  [value]="(correct / questions.length) * 100" 
+  [showValue]="true"
+  styleClass="mt-3 mb-4">
+</p-progressBar>
+
+<!-- Question Review -->
 <div class="questions">
-  <div *ngFor="let question of questions; let i = index">
-    <h1>{{ i + 1 }} - {{ question.text }}</h1>
+  <div *ngFor="let question of questions; let i = index" class="question-review">
+    <h3>{{ i + 1 }} - {{ question.text }}</h3>
     <p
       [ngClass]="
         question.answer == answers[i]
           ? 'correct'
           : answers[i] != null
           ? 'wrong'
-          : ''
+          : 'unattempted'
       "
+      class="answer-text"
     >
-      Your Answer:
-      {{ this.answers[i] != null ? question.options[this.answers[i]] : "-" }}
+      <strong>Your Answer:</strong>
+      {{ this.answers[i] != null ? question.options[this.answers[i]] : "Not answered" }}
     </p>
-    <p>Correct Answer: {{ question.options[question.answer] }}</p>
+    <p class="correct-answer">
+      <strong>Correct Answer:</strong> {{ question.options[question.answer] }}
+    </p>
   </div>
 </div>
-<button (click)="reload()" class="btn-start">Restart</button>
+
+<p-button 
+  label="Restart Quiz" 
+  (onClick)="reload()"
+  styleClass="p-button-success p-button-lg">
+</p-button>
